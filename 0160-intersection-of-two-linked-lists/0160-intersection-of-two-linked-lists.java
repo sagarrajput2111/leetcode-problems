@@ -12,7 +12,7 @@
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode l1=headA,l2=headB;
-        int length1=0,length2=0;
+       /* int length1=0,length2=0;
         while(l1!=null)
         {
             length1++;
@@ -63,6 +63,14 @@ public class Solution {
             return null;
         }
         
+        */
+        //method 2
         
+        while(l1!=l2)
+        {
+            l1=l1==null?headB:l1.next;
+            l2=l2==null?headA:l2.next;
+        }
+        return l1;
     }
 }
