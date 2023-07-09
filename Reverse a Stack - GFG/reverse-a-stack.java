@@ -45,23 +45,42 @@ class GFG
 
 class Solution
 { 
+    public static void r(Stack<Integer> s1,Stack<Integer> s2)
     
+    {
+        
+        if(s1.size()==0)
+        return;
+        else
+        {
+            int i=s1.pop();
+            r(s1,s2);
+            s2.push(i);
+          
+            
+        }
+    }
     
     static void reverse(Stack<Integer> s)
     {
-        ArrayList<Integer> list=new ArrayList<>();
+        // ArrayList<Integer> list=new ArrayList<>();
         
-        while(s.size()!=0)
-        {
-          list.add(s.pop());
-        }
+        // while(s.size()!=0)
+        // {
+        //   list.add(s.pop());
+        // }
         
-        for(int i=0;i<list.size();i++)
-        {
+        // for(int i=0;i<list.size();i++)
+        // {
             
-            s.push(list.get(i));
-        }
+        //     s.push(list.get(i));
+        // }
         
+        Stack<Integer> s2=new Stack<>();
+        r(s,s2);
+        
+        while(s2.size()!=0)
+        s.push(s2.pop());
         
     }
 }
