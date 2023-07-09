@@ -1,38 +1,74 @@
 class MinStack {
 
-    private int[] arr;
+    private long[] arr;
     private int[] min;
     int top=-1;
+    long mini;
     
     public MinStack() {
-        arr=new int[3*10000];
-        min=new int[3*10000];
+        arr=new long[3*10000];
+      //  min=new int[3*10000];
+        mini=Long.MAX_VALUE;
     }
     
     public void push(int val) {
+        // if(top==-1)
+        //     min[top+1]=val;
+        // else
+        // {
+        //     min[top+1]=Math.min(min[top],val);
+        // }
+            
         if(top==-1)
-            min[top+1]=val;
+        {
+            mini=val;
+            arr[++top]=val;
+            
+        }
         else
         {
-            min[top+1]=Math.min(min[top],val);
-        }
+            if(mini>val)
+            {
+                arr[++top]=val-mini+val;//(2*val-mini)
+                mini=val;
+            }
             
-        arr[++top]=val;
+            else
+            {
+                arr[++top]=val;
+            }
+                
+        }
+        
         
         return;
     }
     
     public void pop() {
-        top--;
-        return;
+        
+        
+        if(mini<arr[top])
+           top--;
+        else
+        {
+            
+            mini=mini-arr[top]+mini;//(2*mini-arr[top])
+            top--;
+        }
     }
+
     
     public int top() {
-       return arr[top];
+       if(mini<arr[top])
+           return (int)(arr[top]);
+        else
+            return (int)(mini);
+        
+        
     }
     
     public int getMin() {
-        return min[top];
+        return (int)(mini);
     }
 }
 
