@@ -35,6 +35,7 @@ class Solution {
         int l=1, h=1;
         for(int i=0;i<bloomDay.length;i++)
         {
+            l=Math.min(l,bloomDay[i]);
             h=Math.max(h,bloomDay[i]);
         }
        
