@@ -33,16 +33,10 @@ class Solution {
         System.out.println(temp);
         for(int i=temp.length()-2;i>=0;i--)
         {
-            // if(i==temp.length()-1)
-            // {
-            //     while(i>=0&&temp.charAt(i)==' ')
-            //         i--;
-            // }
-            // else
-            // {
+          
                 s=s+temp.charAt(i);
                 
-            // }
+            
         }
         
         return s;
