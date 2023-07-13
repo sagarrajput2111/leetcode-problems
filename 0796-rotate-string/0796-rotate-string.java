@@ -1,28 +1,38 @@
 class Solution {
     public boolean rotateString(String s, String goal) {
+        
         if(s.length()!=goal.length())
             return false;
         
-        int idx=0;
-        char c=goal.charAt(0);
         
-        int ptr=-1;
         
-        for(int i=0;i<s.length();i++)
+        //O(n) solution
+        int i=0,j=0;
+        
+        while(j<goal.length()&&i<s.length())
         {
-            if(s.charAt(i)==c){
-                ptr=i;
-                String s1=s.substring(0,i);
-                String s2=s.substring(i,s.length());
-                String s3=s2+s1;
-                System.out.println(s3);
-                if(goal.equals(s3))
-                    return true;
-                else continue;
-            
+            if(s.charAt(i)==goal.charAt(j))
+            {
+                i++;
+                j++;
             }
+            
+            else
+            {
+               if(j==0)
+                   i++;
+                else
+                    j=0;
+            }
+            
+            
         }
-        return false;
+        
+       // System.out.println(s.substring(i)+"  "+goal.substring(0,goal.length()-i));
+        return (s.substring(0,goal.length() - j).equals(goal.substring(j)));
+        
+        
+        
         
     }
 }
