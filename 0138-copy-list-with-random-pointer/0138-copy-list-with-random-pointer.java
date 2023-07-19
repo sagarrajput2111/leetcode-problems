@@ -94,20 +94,36 @@ class Solution {
 //             fast.next=fast.next.next;
             
 //         }
+        Node newHead=head.next;
+    Node slow=head,fast=head.next;
+        while(fast.next!=null)
+        {
+            
+            slow.next=fast.next;
+            slow=slow.next;
+            fast.next=fast.next.next;
+            fast=fast.next;
+        }
         
-    Node dummy = new Node(0);
-    Node itr = head;
-    temp = dummy;
-    Node fast=null;
-    while(itr != null) {
-        fast = itr.next.next;
-        temp.next = itr.next;
-        itr.next = fast;
-        temp = temp.next;
-        itr = fast;
-    }
+        slow.next=null;
         
         
-        return dummy.next;
+        
+//     Node dummy = new Node(0);
+//     Node itr = head;
+//     temp = dummy;
+//     Node fast=null;
+//     while(itr != null) {
+//         fast = itr.next.next;
+//         temp.next = itr.next;
+//         itr.next = fast;
+//         temp = temp.next;
+//         itr = fast;
+//     }
+        
+        
+//         return dummy.next;
+        
+        return newHead;
     }
 }
